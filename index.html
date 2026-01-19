@@ -240,6 +240,64 @@ body {
  font-size: 16px;
  line-height: 1.5;
 }
+
+/* COUNTDOWN */
+.countdown-container {
+ margin: 30px 0;
+ display: flex;
+ justify-content: center;
+ gap: 20px;
+ flex-wrap: wrap;
+}
+
+.countdown-box {
+ background: linear-gradient(135deg, #fff 0%, #f9f9f9 100%);
+ border: 2px solid #b79b5b;
+ border-radius: 15px;
+ padding: 20px;
+ min-width: 100px;
+ box-shadow: 0 5px 15px rgba(183, 155, 91, 0.15);
+ transition: transform 0.3s ease;
+}
+
+.countdown-box:hover {
+ transform: translateY(-5px);
+ box-shadow: 0 8px 25px rgba(183, 155, 91, 0.25);
+}
+
+.countdown-number {
+ font-size: 48px;
+ font-weight: 600;
+ color: #b79b5b;
+ display: block;
+ margin-bottom: 5px;
+}
+
+.countdown-label {
+ font-size: 16px;
+ color: #8b7c47;
+ text-transform: uppercase;
+ letter-spacing: 2px;
+}
+
+.countdown-hearts {
+ font-size: 24px;
+ margin: 20px 0;
+ animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+ 0%, 100% { transform: scale(1); }
+ 25% { transform: scale(1.1); }
+ 50% { transform: scale(1); }
+}
+
+.countdown-message {
+ margin-top: 20px;
+ font-style: italic;
+ color: #b79b5b;
+ font-size: 18px;
+}
 </style>
 </head>
 
@@ -271,7 +329,27 @@ body {
  <div class="card">
   <h2>Ci sposiamo il</h2>
   <h1>23 Giugno 2026</h1>
-  <p>Vi aspettiamo numerosi nel giorno più importante della nostra vita</p>
+  <div class="countdown-hearts">💕 💍 💕</div>
+  <div class="countdown-container" id="countdown">
+   <div class="countdown-box">
+    <span class="countdown-number" id="days">--</span>
+    <span class="countdown-label">Giorni</span>
+   </div>
+   <div class="countdown-box">
+    <span class="countdown-number" id="hours">--</span>
+    <span class="countdown-label">Ore</span>
+   </div>
+   <div class="countdown-box">
+    <span class="countdown-number" id="minutes">--</span>
+    <span class="countdown-label">Minuti</span>
+   </div>
+   <div class="countdown-box">
+    <span class="countdown-number" id="seconds">--</span>
+    <span class="countdown-label">Secondi</span>
+   </div>
+  </div>
+  <p class="countdown-message" id="countdownMessage">Mancano pochi istanti al nostro giorno speciale!</p>
+  <p style="margin-top: 30px;">Vi aspettiamo numerosi nel giorno più importante della nostra vita</p>
  </div>
 </section>
 
@@ -349,6 +427,47 @@ body {
 
 <script>
 const API_URL="https://script.google.com/macros/s/AKfycbyq9C1G56XkVMfudl7VLS4q3hf7G9RRSK2TUndto9Y84-fhO86Pwsu7bbcTa4bIcA9ksg/exec";
+
+// COUNTDOWN
+const weddingDate = new Date("2026-06-23T16:30:00").getTime();
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
+
+  if (distance < 0) {
+    document.getElementById("days").textContent = "00";
+    document.getElementById("hours").textContent = "00";
+    document.getElementById("minutes").textContent = "00";
+    document.getElementById("seconds").textContent = "00";
+    document.getElementById("countdownMessage").textContent = "È il nostro giorno speciale! 💑";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("days").textContent = String(days).padStart(2, '0');
+  document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+  document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+  document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+
+  if (days > 30) {
+    document.getElementById("countdownMessage").textContent = "Non vediamo l'ora di condividere questo giorno con voi!";
+  } else if (days > 7) {
+    document.getElementById("countdownMessage").textContent = "Ci siamo quasi... il grande giorno si avvicina!";
+  } else if (days > 0) {
+    document.getElementById("countdownMessage").textContent = "Mancano solo pochi giorni! 💕";
+  } else {
+    document.getElementById("countdownMessage").textContent = "È oggi! Ci vediamo tra pochissimo! 🎉";
+  }
+}
+
+// Aggiorna countdown ogni secondo
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
 // Funzione per mostrare notifica custom
 function showNotification(title, message, type = 'success') {
