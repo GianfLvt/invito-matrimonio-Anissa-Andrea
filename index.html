@@ -247,7 +247,7 @@ body {
  display: flex;
  justify-content: center;
  gap: 20px;
- flex-wrap: wrap;
+ flex-wrap: nowrap;
 }
 
 .countdown-box {
@@ -297,6 +297,40 @@ body {
  font-style: italic;
  color: #b79b5b;
  font-size: 18px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+ .countdown-container {
+  gap: 8px;
+  padding: 0 10px;
+ }
+ 
+ .countdown-box {
+  padding: 12px 8px;
+  min-width: 60px;
+  border-radius: 10px;
+ }
+ 
+ .countdown-number {
+  font-size: 32px;
+  margin-bottom: 3px;
+ }
+ 
+ .countdown-label {
+  font-size: 10px;
+  letter-spacing: 1px;
+ }
+ 
+ .countdown-hearts {
+  font-size: 20px;
+  margin: 15px 0;
+ }
+ 
+ .countdown-message {
+  font-size: 14px;
+  margin-top: 15px;
+ }
 }
 </style>
 </head>
