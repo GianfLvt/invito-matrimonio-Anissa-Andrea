@@ -198,7 +198,7 @@ body {
  z-index: 10000;
  opacity: 0;
  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
- max-width: 450px;
+ max-width: 500px;
  text-align: center;
 }
 
@@ -248,6 +248,64 @@ body {
  color: #666;
  font-size: 16px;
  line-height: 1.5;
+}
+
+.custom-notification .promo-message {
+ margin-top: 20px;
+ padding: 15px;
+ background: linear-gradient(135deg, #f9f9f9 0%, #fff 100%);
+ border-radius: 10px;
+ border: 1px solid #e0e0e0;
+ font-size: 13px;
+ color: #666;
+ line-height: 1.6;
+}
+
+.custom-notification .promo-message strong {
+ color: #b79b5b;
+ display: block;
+ margin-bottom: 8px;
+ font-size: 14px;
+}
+
+.custom-notification .promo-message a {
+ color: #b79b5b;
+ text-decoration: none;
+ font-weight: 600;
+}
+
+.custom-notification .promo-message a:hover {
+ text-decoration: underline;
+}
+
+.notification-close-btn {
+ margin-top: 20px;
+ background: #b79b5b;
+ color: white;
+ border: none;
+ padding: 10px 30px;
+ border-radius: 8px;
+ cursor: pointer;
+ font-family: 'Playfair Display', serif;
+ font-size: 16px;
+ transition: all 0.3s;
+}
+
+.notification-close-btn:disabled {
+ background: #ccc;
+ cursor: not-allowed;
+ opacity: 0.6;
+}
+
+.notification-close-btn:not(:disabled):hover {
+ background: #8b7c47;
+ transform: translateY(-2px);
+}
+
+.notification-timer {
+ font-size: 12px;
+ color: #999;
+ margin-top: 5px;
 }
 
 /* COUNTDOWN */
@@ -347,6 +405,30 @@ body {
  margin: 60px auto;
  text-align: center;
  position: relative;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 10px;
+}
+
+.separator-ornament {
+ font-size: 24px;
+ color: #b79b5b;
+ display: inline-block;
+ flex-shrink: 0;
+}
+
+.separator-ornament.flip {
+ transform: rotate(180deg);
+}
+
+.separator-line {
+ display: inline-block;
+ width: 150px;
+ height: 1px;
+ background: #b79b5b;
+ vertical-align: middle;
+ flex-shrink: 0;
 }
 
 /* LAYOUT CERIMONIA */
@@ -492,7 +574,7 @@ section {
 
 .hero::before,
 .hero::after {
- content: '✨';
+ content: '✦';
  position: absolute;
  font-size: 24px;
  color: #b79b5b;
@@ -523,7 +605,7 @@ section {
 
 h1::before,
 h1::after {
- content: '✿';
+ content: '◆';
  color: #b79b5b;
  font-size: 0.6em;
  margin: 0 15px;
@@ -558,6 +640,27 @@ h1::after {
  border-left: none;
  border-top: none;
 }
+
+/* COPYRIGHT FOOTER */
+.copyright-footer {
+ background: #f9f9f9;
+ border-top: 1px solid #e0e0e0;
+ padding: 15px 20px;
+ text-align: center;
+ font-size: 12px;
+ color: #999;
+ margin-top: 40px;
+}
+
+.copyright-footer a {
+ color: #b79b5b;
+ text-decoration: none;
+ transition: color 0.3s;
+}
+
+.copyright-footer a:hover {
+ color: #8b7c47;
+}
 </style>
 </head>
 
@@ -586,18 +689,19 @@ h1::after {
 
 <!-- SEPARATORE -->
 <div class="section-separator">
+ <span class="separator-ornament">❥</span>
  <span class="separator-line"></span>
- <span class="separator-ornament">💕</span>
+ <span class="separator-ornament">♥</span>
  <span class="separator-line"></span>
+ <span class="separator-ornament flip">❥</span>
 </div>
 
 <!-- DATA -->
 <section id="data">
- <div class="decorative-flourish">✿ ❀ ✿</div>
  <div class="card">
   <h2>Ci sposiamo il</h2>
   <h1>23 Giugno 2026</h1>
-  <div class="countdown-hearts">💕 💍 💕</div>
+  <div class="countdown-hearts">♡ ♥ ♡</div>
   <div class="countdown-container" id="countdown">
    <div class="countdown-box">
     <span class="countdown-number" id="days">--</span>
@@ -623,14 +727,15 @@ h1::after {
 
 <!-- SEPARATORE -->
 <div class="section-separator">
+ <span class="separator-ornament">❥</span>
  <span class="separator-line"></span>
- <span class="separator-ornament">💍</span>
+ <span class="separator-ornament">♥</span>
  <span class="separator-line"></span>
+ <span class="separator-ornament flip">❥</span>
 </div>
 
 <!-- CERIMONIA -->
 <section id="cerimonia">
- <div class="decorative-flourish">✿ ❀ ✿</div>
  <h1>La Cerimonia</h1>
  <h2>Hotel Lido Torre Egnazia</h2>
  
@@ -639,8 +744,8 @@ h1::after {
   
   <div class="cerimonia-details">
    <div class="cerimonia-info">
-    <p><strong>🕐 Orario:</strong> 16:30</p>
-    <p><strong>📍 Indirizzo:</strong> Contrada Losciale 70/C</p>
+    <p><strong>◆ Orario:</strong> 16:30</p>
+    <p><strong>◆ Indirizzo:</strong> Contrada Losciale 70/C</p>
    </div>
    
    <div class="cerimonia-map">
@@ -655,14 +760,15 @@ h1::after {
 
 <!-- SEPARATORE -->
 <div class="section-separator">
+ <span class="separator-ornament">❥</span>
  <span class="separator-line"></span>
- <span class="separator-ornament">🌸</span>
+ <span class="separator-ornament">♥</span>
  <span class="separator-line"></span>
+ <span class="separator-ornament flip">❥</span>
 </div>
 
 <!-- RSVP -->
 <section id="rsvp">
-<div class="decorative-flourish">✿ ❀ ✿</div>
 <div class="card">
 
 <h2>Conferma Presenza</h2>
@@ -710,14 +816,15 @@ h1::after {
 
 <!-- SEPARATORE -->
 <div class="section-separator">
+ <span class="separator-ornament">❥</span>
  <span class="separator-line"></span>
- <span class="separator-ornament">🎁</span>
+ <span class="separator-ornament">♥</span>
  <span class="separator-line"></span>
+ <span class="separator-ornament flip">❥</span>
 </div>
 
 <!-- REGALO -->
 <section id="regalo">
- <div class="decorative-flourish">✿ ❀ ✿</div>
  <div class="card">
   <h2>Un vostro pensiero è gradito</h2>
   <p style="margin: 20px 0; font-style: italic; color: #8b7c47; ">Celebrare insieme questo giorno sarà per noi il regalo più bello, ma se desiderate contribuire al nostro regalo di nozze ve ne saremmo profondamente grati.</p>
@@ -733,9 +840,14 @@ h1::after {
 
 <!-- FOOTER -->
 <section>
- <h2>💝 Grazie di cuore 💝</h2>
+ <h2>♥ Grazie di cuore ♥</h2>
  <p>Andrea & Anissa</p>
 </section>
+
+<!-- COPYRIGHT -->
+<footer class="copyright-footer">
+ <p>© 2026 - Sito creato da <a href="mailto:gianf@gianflvt.com">Gianfranco Lavoratti</a></p>
+</footer>
 
 <script>
 const API_URL="https://script.google.com/macros/s/AKfycbyq9C1G56XkVMfudl7VLS4q3hf7G9RRSK2TUndto9Y84-fhO86Pwsu7bbcTa4bIcA9ksg/exec";
@@ -752,7 +864,7 @@ function updateCountdown() {
     document.getElementById("hours").textContent = "00";
     document.getElementById("minutes").textContent = "00";
     document.getElementById("seconds").textContent = "00";
-    document.getElementById("countdownMessage").textContent = "È il nostro giorno speciale! 💑";
+    document.getElementById("countdownMessage").textContent = "È il nostro giorno speciale!";
     return;
   }
 
@@ -771,9 +883,9 @@ function updateCountdown() {
   } else if (days > 7) {
     document.getElementById("countdownMessage").textContent = "Ci siamo quasi... il grande giorno si avvicina!";
   } else if (days > 0) {
-    document.getElementById("countdownMessage").textContent = "Mancano solo pochi giorni! 💕";
+    document.getElementById("countdownMessage").textContent = "Mancano solo pochi giorni!";
   } else {
-    document.getElementById("countdownMessage").textContent = "È oggi! Ci vediamo tra pochissimo! 🎉";
+    document.getElementById("countdownMessage").textContent = "È oggi! Ci vediamo tra pochissimo!";
   }
 }
 
@@ -786,22 +898,61 @@ function showNotification(title, message, type = 'success') {
   const notification = document.createElement('div');
   notification.className = `custom-notification ${type}`;
   
-  const icon = type === 'success' ? '💝' : '⚠️';
+  const icon = type === 'success' ? '✓' : '✕';
+  
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'notification-close-btn';
+  closeBtn.textContent = 'OK';
+  closeBtn.disabled = true;
+  
+  const timerSpan = document.createElement('div');
+  timerSpan.className = 'notification-timer';
+  
+  let promoHTML = '';
+  if (type === 'success') {
+    promoHTML = `
+      <div class="promo-message">
+        <strong>💡 Ti piace questo invito digitale?</strong>
+        Puoi averlo anche tu ad un prezzo stracciato! Personalizzalo per il tuo evento speciale.
+        <br><br>
+        Per info contatta: <a href="mailto:gianf@gianflvt.com">gianf@gianflvt.com</a>
+      </div>
+    `;
+  }
   
   notification.innerHTML = `
     <div class="icon">${icon}</div>
     <h3>${title}</h3>
     <p>${message}</p>
+    ${promoHTML}
   `;
+  
+  notification.appendChild(closeBtn);
+  notification.appendChild(timerSpan);
   
   document.body.appendChild(notification);
   
   setTimeout(() => notification.classList.add('show'), 100);
   
-  setTimeout(() => {
+  // Countdown per abilitare il bottone
+  let countdown = 5;
+  timerSpan.textContent = `Potrai chiudere tra ${countdown} secondi...`;
+  
+  const countdownInterval = setInterval(() => {
+    countdown--;
+    if (countdown > 0) {
+      timerSpan.textContent = `Potrai chiudere tra ${countdown} secondi...`;
+    } else {
+      timerSpan.textContent = '';
+      closeBtn.disabled = false;
+      clearInterval(countdownInterval);
+    }
+  }, 1000);
+  
+  closeBtn.onclick = () => {
     notification.classList.remove('show');
     setTimeout(() => notification.remove(), 600);
-  }, 4000);
+  };
 }
 
 const partecipazione = document.getElementById("partecipazione");
