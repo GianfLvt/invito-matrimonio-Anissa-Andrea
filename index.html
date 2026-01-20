@@ -3,16 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Andrea & Anissa</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 
+html {
+ overflow-x: hidden;
+ width: 100%;
+}
+
+html, body {
+ max-width: 100%;
+ overflow-x: hidden;
+}
 
 section {
  padding:80px 20px;
  text-align:center;
+ max-width: 100%;
+ overflow-x: hidden;
 }
 
 .hero {
@@ -20,6 +31,9 @@ section {
  align-items:center;
  justify-content:center;
  gap:50px;
+ max-width: 100%;
+ overflow: hidden;
+ position: relative;
 }
 
 .hero img {
@@ -146,11 +160,14 @@ nav {
  top: 0;
  left: 0;
  right: 0;
+ width: 100%;
  background: rgba(255, 255, 255, 0.95);
  backdrop-filter: blur(10px);
  border-bottom: 1px solid #b79b5b;
  padding: 10px 0;
  z-index: 1000;
+ overflow-x: hidden;
+ box-sizing: border-box;
 }
 
 nav ul {
@@ -182,6 +199,13 @@ body {
  color: #b79b5b;
  scroll-behavior: smooth;
  padding-top: 60px;
+ overflow-x: hidden;
+ width: 100%;
+ box-sizing: border-box;
+}
+
+* {
+ box-sizing: border-box;
 }
 
 /* NOTIFICA CUSTOM */
@@ -308,6 +332,131 @@ body {
  margin-top: 5px;
 }
 
+/* MOBILE: Notifica compatta ed equilibrata */
+@media (max-width: 768px) {
+ .custom-notification {
+  max-width: 90vw;
+  max-height: 80vh;
+  padding: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(-100px);
+  overflow-y: auto;
+  border-radius: 12px;
+ }
+ 
+ .custom-notification.show {
+  transform: translate(-50%, -50%) translateY(0);
+ }
+ 
+ /* Icona più compatta */
+ .custom-notification .icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+ }
+ 
+ /* Titolo più compatto */
+ .custom-notification h3 {
+  font-size: 20px;
+  margin: 0 0 8px 0;
+ }
+ 
+ /* BOX PRINCIPALE CONFERMA - EVIDENZIATO */
+ .custom-notification > p {
+  background: linear-gradient(135deg, #f9f9f9 0%, #fff 100%);
+  border: 2px solid #b79b5b;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(183, 155, 91, 0.15);
+ }
+ 
+ /* SEZIONE PROMOZIONALE - SECONDARIA E DISCRETA */
+ .custom-notification .promo-message {
+  margin-top: 15px;
+  padding: 10px;
+  background: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  font-size: 11px;
+  color: #888;
+  line-height: 1.4;
+ }
+ 
+ .custom-notification .promo-message strong {
+  color: #999;
+  font-size: 12px;
+  margin-bottom: 5px;
+ }
+ 
+ .custom-notification .promo-message a {
+  color: #b79b5b;
+  font-size: 11px;
+ }
+ 
+ /* Bottone più compatto */
+ .notification-close-btn {
+  margin-top: 15px;
+  padding: 10px 25px;
+  font-size: 14px;
+  border-radius: 6px;
+ }
+ 
+ /* Timer più piccolo */
+ .notification-timer {
+  font-size: 10px;
+  margin-top: 3px;
+ }
+ 
+ /* CONTROLLO OVERFLOW TOTALE */
+ html, body {
+  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
+ }
+ 
+ /* Tutti gli elementi contenuti */
+ * {
+  max-width: 100%;
+ }
+ 
+ /* Wrapper globale */
+ section, div, nav, footer {
+  overflow-x: hidden;
+  box-sizing: border-box;
+ }
+ 
+ /* Nascondere decorazioni che potrebbero uscire */
+ .hero::before,
+ .hero::after,
+ .decorative-corner {
+  display: none;
+ }
+ 
+ /* Iframe contenuto */
+ iframe {
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box;
+ }
+ 
+ /* Immagini responsive */
+ img {
+  max-width: 100%;
+  height: auto;
+ }
+ 
+ /* Card con margini sicuri */
+ .card {
+  margin-left: 0;
+  margin-right: 0;
+ }
+}
+
 /* COUNTDOWN */
 .countdown-container {
  margin: 30px 0;
@@ -368,15 +517,46 @@ body {
 
 /* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
+ /* Reset generale per mobile */
+ body {
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding-top: 60px;
+ }
+ 
+ /* Sezioni centrate */
+ section {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 60px 15px;
+  overflow-x: hidden;
+ }
+ 
+ /* Card centrata */
+ .card {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+ }
+ 
+ /* Countdown */
  .countdown-container {
   gap: 8px;
   padding: 0 10px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
  }
  
  .countdown-box {
   padding: 12px 8px;
   min-width: 60px;
   border-radius: 10px;
+  box-sizing: border-box;
  }
  
  .countdown-number {
@@ -398,7 +578,6 @@ body {
   font-size: 14px;
   margin-top: 15px;
  }
-}
 
 /* DECORAZIONI E SEPARATORI */
 .section-separator {
@@ -409,6 +588,8 @@ body {
  align-items: center;
  justify-content: center;
  gap: 10px;
+ max-width: 100%;
+ overflow: hidden;
 }
 
 .separator-ornament {
@@ -434,11 +615,14 @@ body {
 /* LAYOUT CERIMONIA */
 .cerimonia-container {
  max-width: 900px;
+ width: 100%;
  margin: 40px auto;
  display: grid;
  grid-template-columns: 1fr 1fr;
  gap: 30px;
  align-items: start;
+ box-sizing: border-box;
+ overflow: hidden;
 }
 
 .cerimonia-photo {
@@ -481,13 +665,29 @@ body {
 }
 
 @media (max-width: 768px) {
+ /* Cerimonia container */
  .cerimonia-container {
   grid-template-columns: 1fr;
   gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0 auto;
  }
  
  .cerimonia-photo {
   max-height: 300px;
+  width: 100%;
+ }
+ 
+ .cerimonia-map {
+  width: 100%;
+  overflow: hidden;
+ }
+ 
+ .cerimonia-map iframe {
+  width: 100%;
+  max-width: 100%;
  }
  
  /* HERO MOBILE */
@@ -495,6 +695,9 @@ body {
   flex-direction: column;
   gap: 30px;
   padding: 40px 20px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
  }
  
  .hero h1 {
@@ -512,17 +715,79 @@ body {
   border-radius: 150px 150px 15px 15px;
  }
  
- section {
-  padding: 60px 15px;
+ /* Navbar mobile */
+ nav {
+  width: 100%;
+  padding: 10px 0;
+  box-sizing: border-box;
  }
  
+ nav ul {
+  gap: 15px;
+  padding: 0 10px;
+  flex-wrap: wrap;
+ }
+ 
+ nav a {
+  font-size: 14px;
+  padding: 5px 10px;
+ }
+ 
+ /* Notifiche mobile */
+ .custom-notification {
+  max-width: 90%;
+  width: 90%;
+  padding: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100px);
+ }
+ 
+ .custom-notification.show {
+  transform: translateX(-50%) translateY(0);
+ }
+ 
+ /* Separatori mobile */
+ .section-separator {
+  margin: 40px auto;
+  padding: 0 10px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+ }
+ 
+ .separator-line {
+  width: 80px;
+ }
+ 
+ .separator-ornament {
+  font-size: 20px;
+ }
+ 
+ /* Titoli mobile */
  h1 {
   font-size: 32px;
+  word-wrap: break-word;
  }
  
  h2 {
   font-size: 24px;
+  word-wrap: break-word;
  }
+ 
+ /* Form inputs mobile */
+ input, select, textarea, button {
+  max-width: 100%;
+  box-sizing: border-box;
+ }
+ 
+ /* Footer mobile */
+ .copyright-footer {
+  width: 100%;
+  padding: 15px 10px;
+  box-sizing: border-box;
+ }
+}
+
 }
 
 .separator-ornament {
