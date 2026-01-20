@@ -413,20 +413,23 @@ body {
  
  /* CONTROLLO OVERFLOW TOTALE */
  html, body {
-  overflow-x: hidden !important;
   width: 100%;
   max-width: 100vw;
   position: relative;
  }
  
- /* Tutti gli elementi contenuti */
- * {
-  max-width: 100%;
+ body {
+  overflow-x: hidden;
  }
  
  /* Wrapper globale */
- section, div, nav, footer {
-  overflow-x: hidden;
+ section, nav, footer {
+  box-sizing: border-box;
+ }
+ 
+ /* Form specifico - assicurarsi che gli input siano visibili */
+ form {
+  width: 100%;
   box-sizing: border-box;
  }
  
@@ -530,17 +533,24 @@ body {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
-  padding: 60px 15px;
-  overflow-x: hidden;
+  padding: 60px 25px;
  }
  
  /* Card centrata */
  .card {
   width: 100%;
   max-width: 100%;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 0;
+  padding: 25px 20px;
   box-sizing: border-box;
+  border: 2px solid #b79b5b !important;
+ }
+ 
+ /* Label con text-align left */
+ .card label {
+  text-align: left;
+  display: block;
+  margin-bottom: 5px;
  }
  
  /* Countdown */
@@ -718,19 +728,21 @@ body {
  /* Navbar mobile */
  nav {
   width: 100%;
-  padding: 10px 0;
+  padding: 8px 0;
   box-sizing: border-box;
  }
  
  nav ul {
-  gap: 15px;
-  padding: 0 10px;
-  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 5px;
+  flex-wrap: nowrap;
+  justify-content: space-between;
  }
  
  nav a {
-  font-size: 14px;
-  padding: 5px 10px;
+  font-size: 12px;
+  padding: 5px 8px;
+  white-space: nowrap;
  }
  
  /* Notifiche mobile */
@@ -776,8 +788,16 @@ body {
  
  /* Form inputs mobile */
  input, select, textarea, button {
+  width: 100% !important;
   max-width: 100%;
   box-sizing: border-box;
+  border: 1px solid #b79b5b !important;
+  margin: 5px 0 !important;
+  padding: 10px !important;
+ }
+ 
+ button {
+  width: auto !important;
  }
  
  /* Footer mobile */
